@@ -1,0 +1,22 @@
+import { STAGE, STAGES } from "./typings";
+
+export const stages: Record<STAGES, STAGE> = {
+  dev: {
+    region: null,
+    accountId: null,
+    role: null,
+    vpc: {
+      subnetIds: [],
+      securityGroupIds: [],
+    },
+  },
+  prod: {
+    region: null,
+    accountId: null,
+    role: null,
+    vpc: {
+      subnetIds: [],
+      securityGroupIds: [],
+    },
+  },
+};

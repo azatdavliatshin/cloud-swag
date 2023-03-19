@@ -1,2 +1,3 @@
 # cloud-swag
-Cloud Simple Web Application Generator
+
+Cloud Simple Web Api Generator

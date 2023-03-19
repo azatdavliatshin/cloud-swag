@@ -1,0 +1,47 @@
+import type { AWS } from "@serverless/typescript";
+import { STAGES } from "@deployment/typings";
+import { stages } from "@deployment/stages";
+
+const defaultStage: STAGES = "dev";
+const stage = (process.env.STAGE || defaultStage) as STAGES;
+
+const serverlessConfiguration: AWS = {
+  service: "{{serviceName}}",
+  frameworkVersion: "3",
+  plugins: ["serverless-esbuild"],
+  provider: {
+    name: "aws",
+    region: stages[stage].region,
+    stage,
+    runtime: "nodejs18.x",
+    iam: {
+      role: `arn:aws:iam::${stages[stage].accountId}:role/${stages[stage].role}`,
+    },
+    apiGateway: {
+      minimumCompressionSize: 1024,
+      shouldStartNameWithService: true,
+    },
+    environment: {
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
+      NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      STAGE: stage,
+      REGION: stages[stage].region,
+    },
+  }, // import the function via paths functions: {},
+  package: { individually: true },
+  custom: {
+    esbuild: {
+      bundle: true,
+      minify: false,
+      sourcemap: true,
+      exclude: ["aws-sdk"],
+      target: "node18",
+      define: {
+        "require.resolve": undefined,
+      },
+      platform: "node",
+      concurrency: 10,
+    },
+  },
+};
+module.exports = serverlessConfiguration;
