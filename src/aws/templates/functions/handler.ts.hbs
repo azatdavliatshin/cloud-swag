@@ -1,0 +1,13 @@
+import { APIGatewayProxyEvent, Handler } from "aws-lambda";
+import { createContainer } from "src/inversify.config";
+import * as TYPES from "@infrastructure/types";
+import { I{{> resolvedFunctionNamePascalCase}}Processor } from "@infrastructure/interfaces/{{> resolvedFunctionName}}Processor";
+
+export const {{#if functionName}}{{functionName}}{{else}}{{methodPath}}Handler{{/if}}: Handler<APIGatewayProxyEvent> = async (
+  event
+) => {
+    console.log(event);
+    const container = await createContainer();
+    const processor = container.get<I{{> resolvedFunctionNamePascalCase}}Processor>(TYPES.{{> resolvedFunctionNamePascalCase}}Processor);
+    // your code goes here
+};

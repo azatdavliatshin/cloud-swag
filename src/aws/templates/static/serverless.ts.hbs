@@ -2,6 +2,8 @@ import type { AWS } from "@serverless/typescript";
 import { STAGES } from "@deployment/typings";
 import { stages } from "@deployment/stages";
 
+import * as functions from "@functions";
+
 const defaultStage: STAGES = "dev";
 const stage = (process.env.STAGE || defaultStage) as STAGES;
 
@@ -27,7 +29,8 @@ const serverlessConfiguration: AWS = {
       STAGE: stage,
       REGION: stages[stage].region,
     },
-  }, // import the function via paths functions: {},
+  }, // import the function via paths 
+  functions,
   package: { individually: true },
   custom: {
     esbuild: {

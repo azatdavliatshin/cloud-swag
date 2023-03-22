@@ -1,0 +1,16 @@
+import "reflect-metadata";
+import { Container } from "inversify";
+
+import * as TYPES from "@infrastructure/types";
+
+// interfaces go here
+
+// processors go here
+
+export const createContainer = async () => {
+    const container = new Container();
+
+    // processors definitions go here
+
+    return container;
+};

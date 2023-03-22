@@ -1,0 +1,7 @@
+import { injectable } from "inversify";
+import { I{{> resolvedFunctionNamePascalCase}}Processor } from "@infrastructure/interfaces/{{> resolvedFunctionName}}Processor";
+
+@injectable()
+export class {{> resolvedFunctionNamePascalCase}}Processor implements I{{> resolvedFunctionNamePascalCase}}Processor {
+  constructor() {}
+}

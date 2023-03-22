@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@functions": ["src/functions/index.ts"],
       "@functions/*": ["src/functions/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@deployment/*": ["deployment/*"],

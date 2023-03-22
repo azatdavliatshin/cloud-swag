@@ -1,6 +1,7 @@
 import isFileExists from "../../utils/isFileExists.js";
 import initActions from "./actions/init.js";
-import getActions from "./actions/get.js";
+import functionAction from "./actions/function.js";
+import format from "./actions/format.js";
 
 const prompts = [
   {
@@ -49,18 +50,16 @@ if (!isCloudSwagInitialized) {
 export default {
   description: "Generator for AWS resources",
   prompts,
-  actions(answers) {
+  actions() {
     const actions = [];
 
     if (!isCloudSwagInitialized) {
       actions.push(...initActions);
     }
 
-    switch (answers.method) {
-      case "get":
-        actions.push(...getActions);
-        break;
-    }
+    actions.push(...functionAction);
+
+    actions.push(format);
 
     return actions;
   },

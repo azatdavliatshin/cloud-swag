@@ -4,26 +4,42 @@ import { promisify } from "node:util";
 const addTSConfigFiles = {
   type: "addMany",
   destination: `${process.cwd()}`,
-  templateFiles: "src/templates/tsconfigs",
-  base: "src/templates/tsconfigs",
-  skipIfExists: process.env.CLOUD_SWAG_DEV,
+  templateFiles: "src/aws/templates/tsconfigs",
+  base: "src/aws/templates/tsconfigs",
 };
 
 const addDeploymentConfiguration = {
   type: "addMany",
   destination: `${process.cwd()}/deployment`,
-  templateFiles: "src/templates/deployment",
-  base: "src/templates/deployment",
-  skipIfExists: process.env.CLOUD_SWAG_DEV,
+  templateFiles: "src/aws/templates/deployment",
+  base: "src/aws/templates/deployment",
 };
 
 // figure out better naming instead of static
 const addStaticFiles = {
   type: "addMany",
   destination: `${process.cwd()}`,
-  templateFiles: "src/templates/static",
-  base: "src/templates/static",
-  skipIfExists: process.env.CLOUD_SWAG_DEV,
+  templateFiles: "src/aws/templates/static",
+  base: "src/aws/templates/static",
+};
+
+const initInfrastructureFiles = {
+  type: "addMany",
+  destination: `${process.cwd()}/src/infrastructure`,
+  templateFiles: "src/aws/templates/infrastructure",
+  base: "src/aws/templates/infrastructure",
+};
+
+const addFunctionsFolder = {
+  type: "add",
+  path: `${process.cwd()}/src/functions/index.ts`,
+  template: "// module with functions",
+};
+
+const addInversifyConfigFile = {
+  type: "add",
+  path: `${process.cwd()}/src/inversify.config.ts`,
+  templateFile: "src/aws/templates/inversify.config.ts.hbs",
 };
 
 const installDeps = async () => {
@@ -46,5 +62,8 @@ export default [
   addTSConfigFiles,
   addDeploymentConfiguration,
   addStaticFiles,
+  initInfrastructureFiles,
+  addFunctionsFolder,
+  addInversifyConfigFile,
   installDeps,
 ];

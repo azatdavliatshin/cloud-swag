@@ -1,0 +1,18 @@
+import { stages } from '@deployment/stages';
+import { STAGES } from '@deployment/typings';
+import { handlerPath } from '@infrastructure/handler-resolver';
+
+const stage = process.env.STAGE as STAGES;
+
+export default {
+  handler: `${handlerPath(__dirname)}/handler.{{#if functionName}}{{functionName}}{{else}}{{methodPath}}Handler{{/if}}`,
+  vpc: stages[stage].vpc,
+  events: [
+    {
+      http: {
+        method: '{{method}}',
+        path: 'api/v1/{{methodPath}}'
+      },
+    },
+  ],
+};
