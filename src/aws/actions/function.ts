@@ -1,10 +1,9 @@
 export default [
   {
     type: "addMany",
-    // handle properly name for method
     destination: `${process.cwd()}/src/functions/{{> resolvedFunctionName}}Handler`,
-    templateFiles: "src/aws/templates/functions",
-    base: "src/aws/templates/functions",
+    templateFiles: "templates/aws/functions",
+    base: "templates/aws/functions",
   },
   {
     type: "append",
@@ -35,7 +34,7 @@ export default [
   {
     type: "add",
     path: `${process.cwd()}/src/processors/{{> resolvedFunctionName}}Processor.ts`,
-    templateFile: "src/aws/templates/processors/processor.ts.hbs",
+    templateFile: "templates/aws/processors/processor.ts.hbs",
   },
   {
     type: "modify",

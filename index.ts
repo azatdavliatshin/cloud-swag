@@ -1,10 +1,10 @@
 #!/usr/bin/env node
+
 import minimist from "minimist";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Plop, run } from "plop";
-
-import isFileExists from "./src/utils/isFileExists.js";
+import { isFileExists } from "./src/utils/isFileExists";
 
 const isPackageJsonExists = await isFileExists("package.json");
 const isCloudSwagInitialized = await isFileExists(".cloudswag");

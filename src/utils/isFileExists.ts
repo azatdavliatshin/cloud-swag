@@ -1,7 +1,7 @@
 import { access, constants } from "node:fs/promises";
 import { join } from "node:path";
 
-export default async function (filename) {
+export const isFileExists = async (filename: string) => {
   const pathToFile = join(process.cwd(), filename);
 
   try {
@@ -10,4 +10,4 @@ export default async function (filename) {
   } catch (error) {
     return false;
   }
-}
+};

@@ -1,21 +1,22 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
+import { CustomActionFunction } from "plop";
 
-export default async function () {
+export const prettify: CustomActionFunction = async () => {
   console.info("Let me clean up a little bit...");
 
   const promisifiedExec = promisify(exec);
 
   try {
-    console.info("Installing dependencies...");
     const { stdout, stderr } = await promisifiedExec("npx prettier --write .");
 
     if (stderr) {
-      console.info(stderr);
+      return stderr;
     } else {
-      console.log(stdout);
+      return stdout;
     }
   } catch (error) {
     console.error(error);
+    throw error;
   }
-}
+};
