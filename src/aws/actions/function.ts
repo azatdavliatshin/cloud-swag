@@ -1,4 +1,4 @@
-export default [
+export const addFunctionActions = [
   {
     type: "addMany",
     destination: `${process.cwd()}/src/functions/{{> resolvedFunctionName}}`,
@@ -12,6 +12,9 @@ export default [
     template:
       "export { default as {{> resolvedFunctionName}} } from './{{> resolvedFunctionName}}';",
   },
+];
+
+export const addProcessorActions = [
   {
     type: "add",
     path: `${process.cwd()}/src/infrastructure/interfaces/{{> processorPath}}.ts`,

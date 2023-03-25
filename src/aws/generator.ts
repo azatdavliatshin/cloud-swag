@@ -3,7 +3,7 @@ import { isValidFunctionName } from "../utils/isValidFunctionName";
 import { prettify } from "../utils/prettifyAction";
 
 import { initActions } from "./actions/initActions";
-import functionActions from "./actions/function";
+import { addFunctionActions, addProcessorActions } from "./actions/function";
 
 export const awsGenerator: (
   isCloudSwagInitialized: boolean
@@ -56,15 +56,27 @@ export const awsGenerator: (
         return true;
       },
     },
+    {
+      type: "confirm",
+      name: "isUniqueProcessorNeeded",
+      message: "Do you want to create separate processor for this method?",
+    },
   ],
-  actions() {
+  actions(answers) {
+    const isUniqueProcessorNeeded = answers!["isUniqueProcessorNeeded"];
+
     const actions: ActionType[] = [];
 
     if (!isCloudSwagInitialized) {
       actions.push(...initActions);
     }
 
-    actions.push(...functionActions);
+    actions.push(...addFunctionActions);
+
+    if (isUniqueProcessorNeeded) {
+      actions.push(...addProcessorActions);
+    }
+
     actions.push(prettify);
 
     actions.push("It's done! Happy coding with AWS :)");
