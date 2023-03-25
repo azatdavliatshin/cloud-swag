@@ -15,7 +15,7 @@ export default function (plop: NodePlopAPI) {
       "What's up?! It's Cloud SWAG (stands for Simple Web API Generator), what do you want to create?"
     );
 
-    plop.setGenerator("AWS", awsGenerator);
+    plop.setGenerator("AWS", awsGenerator(false));
     plop.setGenerator("WIP", {
       description:
         "Don't worry, just a placeholder to show some opportunities :) See ya!",
@@ -28,7 +28,7 @@ export default function (plop: NodePlopAPI) {
         console.info(
           "Hey, wellcome back! What do you want to add to your AWS service?"
         );
-        plop.setGenerator("AWS", awsGenerator);
+        plop.setGenerator("AWS", awsGenerator(true));
         break;
     }
   }

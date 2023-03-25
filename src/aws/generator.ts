@@ -1,22 +1,20 @@
 import { ActionType, PlopGeneratorConfig } from "plop";
-import { isFileExists } from "../utils/isFileExists";
 import { isValidFunctionName } from "../utils/isValidFunctionName";
 import { prettify } from "../utils/prettifyAction";
 
 import { initActions } from "./actions/initActions";
 import functionActions from "./actions/function";
 
-const isCloudSwagInitialized = await isFileExists(".cloudswag");
-
-export const awsGenerator: PlopGeneratorConfig = {
+export const awsGenerator: (
+  isCloudSwagInitialized: boolean
+) => PlopGeneratorConfig = (isCloudSwagInitialized) => ({
   description:
     "AWS resources: Cloud Fromation template (Serverless) and lambdas",
   prompts: [
     {
       type: "input",
       name: "serviceName",
-      message:
-        "Psss! I noticed that the service hasn't been initialized, what's it's name?",
+      message: "Since it's a first time, you have to name your service:",
       validate(value: string) {
         if (value.length) {
           return true;
@@ -72,4 +70,4 @@ export const awsGenerator: PlopGeneratorConfig = {
     actions.push("It's done! Happy coding with AWS :)");
     return actions;
   },
-};
+});
