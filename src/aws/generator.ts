@@ -69,7 +69,7 @@ export const awsGenerator: PlopGeneratorConfig = {
     actions.push(...functionActions);
     actions.push(prettify);
 
-    actions.push("It's done! Enjoy :)");
+    actions.push("It's done! Happy coding with AWS :)");
     return actions;
   },
 };

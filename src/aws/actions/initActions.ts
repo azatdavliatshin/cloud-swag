@@ -51,6 +51,12 @@ const addInversifyConfigFile: AddActionConfig = {
   templateFile: "templates/aws/inversify.config.ts.hbs",
 };
 
+const addCloudSwagFile: AddActionConfig = {
+  type: "add",
+  path: `${process.cwd()}/.cloudswag`,
+  template: "provider=aws",
+};
+
 const installDeps = async () => {
   const promisifiedExec = promisify(exec);
   try {
@@ -74,5 +80,6 @@ export const initActions: ActionType[] = [
   initInfrastructureFiles,
   addFunctionsFolder,
   addInversifyConfigFile,
+  addCloudSwagFile,
   installDeps,
 ];

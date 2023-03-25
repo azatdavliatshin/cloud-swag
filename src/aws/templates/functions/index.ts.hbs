@@ -5,7 +5,7 @@ import { handlerPath } from '@infrastructure/handler-resolver';
 const stage = process.env.STAGE as STAGES;
 
 export default {
-  handler: `${handlerPath(__dirname)}/handler.{{#if functionName}}{{functionName}}{{else}}{{methodPath}}Handler{{/if}}`,
+  handler: `${handlerPath(__dirname)}/handler.{{> resolvedFunctionName}}`,
   vpc: stages[stage].vpc,
   events: [
     {

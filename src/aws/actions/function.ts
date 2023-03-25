@@ -1,7 +1,7 @@
 export default [
   {
     type: "addMany",
-    destination: `${process.cwd()}/src/functions/{{> resolvedFunctionName}}Handler`,
+    destination: `${process.cwd()}/src/functions/{{> resolvedFunctionName}}`,
     templateFiles: "templates/aws/functions",
     base: "templates/aws/functions",
   },
@@ -10,30 +10,30 @@ export default [
     path: `${process.cwd()}/src/functions/index.ts`,
     pattern: "",
     template:
-      "export { default as {{> resolvedFunctionName}}Handler } from './{{> resolvedFunctionName}}Handler';",
+      "export { default as {{> resolvedFunctionName}} } from './{{> resolvedFunctionName}}';",
   },
   {
     type: "add",
-    path: `${process.cwd()}/src/infrastructure/interfaces/{{> resolvedFunctionName}}Processor.ts`,
-    template: `export interface I{{> resolvedFunctionNamePascalCase}}Processor {}`,
+    path: `${process.cwd()}/src/infrastructure/interfaces/{{> processorPath}}.ts`,
+    template: `export interface {{> processorInterfaceName}} {}`,
   },
   {
     type: "modify",
     path: `${process.cwd()}/src/inversify.config.ts`,
     pattern: /interfaces go here/gi,
     template:
-      "interfaces go here\r\nimport { I{{> resolvedFunctionNamePascalCase}}Processor } from '@infrastructure/interfaces/{{> resolvedFunctionName}}Processor'",
+      "interfaces go here\r\nimport { {{> processorInterfaceName}} } from '@infrastructure/interfaces/{{> processorPath}}'",
   },
   {
     type: "modify",
     path: `${process.cwd()}/src/infrastructure/types.ts`,
     pattern: "",
     template:
-      "export const {{> resolvedFunctionNamePascalCase}}Processor = Symbol.for('{{> resolvedFunctionNamePascalCase}}Processor');",
+      "export const {{> processorName}} = Symbol.for('{{> processorName}}');",
   },
   {
     type: "add",
-    path: `${process.cwd()}/src/processors/{{> resolvedFunctionName}}Processor.ts`,
+    path: `${process.cwd()}/src/processors/{{> processorPath}}.ts`,
     templateFile: "templates/aws/processors/processor.ts.hbs",
   },
   {
@@ -41,13 +41,13 @@ export default [
     path: `${process.cwd()}/src/inversify.config.ts`,
     pattern: /processors go here/gi,
     template:
-      "processors go here\r\nimport { {{> resolvedFunctionNamePascalCase}}Processor } from '@processors/{{> resolvedFunctionName}}Processor'",
+      "processors go here\r\nimport { {{> processorName}} } from '@processors/{{> processorPath}}'",
   },
   {
     type: "modify",
     path: `${process.cwd()}/src/inversify.config.ts`,
     pattern: /processors definitions go here/gi,
     template:
-      "processors definitions go here\r\ncontainer.bind<I{{> resolvedFunctionNamePascalCase}}Processor>(TYPES.{{> resolvedFunctionNamePascalCase}}Processor).to({{> resolvedFunctionNamePascalCase}}Processor)",
+      "processors definitions go here\r\ncontainer.bind<{{> processorInterfaceName}}>(TYPES.{{> processorName}}).to({{> processorName}})",
   },
 ];
