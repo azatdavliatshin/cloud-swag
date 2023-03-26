@@ -2,13 +2,17 @@ import "reflect-metadata";
 import { Container } from "inversify";
 
 import * as TYPES from "@infrastructure/types";
+import { HttpProvider } from "@providers/httpProvider";
 
 // interfaces go here
+import { IHttpProvider } from "@infrastructure/interfaces/httpProvider";
 
 // processors go here
 
 export const createContainer = async () => {
     const container = new Container();
+
+    container.bind<IHttpProvider>(TYPES.HttpProvider).to(HttpProvider);
 
     // processors definitions go here
 

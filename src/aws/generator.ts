@@ -4,12 +4,13 @@ import { prettify } from "../utils/prettifyAction";
 
 import { initActions } from "./actions/initActions";
 import { addFunctionActions, addProcessorActions } from "./actions/function";
+import { httpProviderActions } from "./actions/httpProvider";
 
 export const awsGenerator: (
   isCloudSwagInitialized: boolean
 ) => PlopGeneratorConfig = (isCloudSwagInitialized) => ({
   description:
-    "AWS resources: Cloud Fromation template (Serverless) and lambdas",
+    "AWS resources (Cloud Formation template (Serverless) and lambdas), powered by Inversify",
   prompts: [
     {
       type: "input",
@@ -69,6 +70,7 @@ export const awsGenerator: (
 
     if (!isCloudSwagInitialized) {
       actions.push(...initActions);
+      actions.push(...httpProviderActions);
     }
 
     actions.push(...addFunctionActions);
