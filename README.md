@@ -24,7 +24,7 @@ cloud-swag
 
 This will display the list of available commands and their usage instructions. From there, you can use the tool to create and manage cloud resources on AWS, Azure, and Google Cloud Platform.
 
-> List of available templates might be found [here](./docs/README.md)
+> List of available templates might be found [here](/docs/README.md)
 
 Once you have created your cloud infrastructure, you can deploy your web application or API using your preferred deployment method. You can use Cloud SWAG to generate starter code for your API, including serverless functions and API Gateway configurations for AWS.
 
