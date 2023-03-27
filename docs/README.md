@@ -1,3 +1,3 @@
 # Available generators
 
-- [AWS](/docs/aws/README.md)
+- [AWS](https://github.com/azatdavliatshin/cloud-swag/blob/main/docs/aws/README.md)
