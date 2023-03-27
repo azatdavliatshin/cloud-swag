@@ -1,3 +1,3 @@
 # Available generators
 
-- [AWS](./aws/README.md)
+- [AWS](docs/aws/README.md)
