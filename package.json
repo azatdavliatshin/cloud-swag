@@ -1,6 +1,6 @@
 {
   "name": "cloud-swag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cloud Simple Web Api Generator",
   "main": "index.ts",
   "bin": {
