@@ -2,11 +2,13 @@
 
 Cloud SWAG (Simple Web Api Generator) is a command-line interface (CLI) tool for creating and managing cloud resources on popular cloud platforms, such as AWS (Azure, and Google Cloud Platform in future versions). With Cloud SWAG, you can easily generate and deploy cloud infrastructure that can be used for APIs.
 
+> The key idea is to collect templates in order to reduce time of creating boilerplates.
+
 ## Installation
 
 To install Cloud SWAG, use npm:
 
-```
+``` bash
 npm install -g cloud-swag
 ```
 
@@ -16,13 +18,13 @@ This will install Cloud SWAG globally on your machine, allowing you to use it fr
 
 To use Cloud SWAG, run the tool using the `cloud-swag` command:
 
-```
+``` bash
 cloud-swag
 ```
 
 This will display the list of available commands and their usage instructions. From there, you can use the tool to create and manage cloud resources on AWS, Azure, and Google Cloud Platform.
 
-> Here (todo: add link to architecture description) you can find more details on suggested architecture for cloud resources.
+> List of available templates might be found [here](./docs/README.md)
 
 Once you have created your cloud infrastructure, you can deploy your web application or API using your preferred deployment method. You can use Cloud SWAG to generate starter code for your API, including serverless functions and API Gateway configurations for AWS.
 
