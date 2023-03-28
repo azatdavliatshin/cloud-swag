@@ -1,6 +1,6 @@
 # Cloud SWAG
 
-Cloud SWAG (Simple Web Api Generator) is a command-line interface (CLI) tool for creating and managing cloud resources on popular cloud platforms, such as AWS (Azure, and Google Cloud Platform in future versions). With Cloud SWAG, you can easily generate and deploy cloud infrastructure that can be used for APIs.
+Cloud SWAG (Simple Web Api Generator) is a command-line interface (CLI) tool for creating and managing cloud resources on popular cloud platforms, such as AWS (Azure, and Google Cloud Platform in future versions). With Cloud SWAG, you can easily generate and deploy cloud infrastructure (programming language agnostic!) that can be used for APIs. 
 
 > The key idea is to collect templates in order to reduce time of creating boilerplates.
 
