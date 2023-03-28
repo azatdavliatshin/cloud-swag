@@ -17,7 +17,7 @@ const serverlessConfiguration: AWS = {
     stage,
     runtime: "nodejs18.x",
     iam: {
-      role: `arn:aws:iam::${stages[stage].accountId}:role/${stages[stage].role}`,
+      role: stages[stage].role ? `arn:aws:iam::${stages[stage].accountId}:role/${stages[stage].role}` : undefined,
     },
     apiGateway: {
       minimumCompressionSize: 1024,

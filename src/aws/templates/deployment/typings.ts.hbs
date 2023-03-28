@@ -2,8 +2,8 @@ export type STAGES = "dev" | "prod";
 
 export type STAGE = {
   region: REGIONS;
-  role: string;
   accountId: string;
+  role?: string;
   vpc?: Record<"subnetIds" | "securityGroupIds", string[]>;
 };
 

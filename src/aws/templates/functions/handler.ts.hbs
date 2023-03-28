@@ -14,4 +14,9 @@ export const {{> resolvedFunctionName}}: Handler<APIGatewayProxyEvent> = async (
     const {{> processorPath}} = container.get<{{> processorInterfaceName}}>(TYPES.{{> processorName}});
     {{/if}}
     // your code goes here
+
+    return {
+      statusCode: 200,
+      body: "This is a message from {{> resolvedFunctionName}}"
+    };
 };
