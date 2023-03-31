@@ -6,9 +6,6 @@ src/
 .prettierrc.json
 build.js
 index.ts
-LICENSE
 package-lock.json
-package.json
 plopfile.ts
-README.md
 tsconfig.json
